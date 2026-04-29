@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nura — Effortless Learning</title>
+  <title>Nura — Робочий простір, що адаптується до тебе</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -60,6 +60,7 @@
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
     .reveal-delay-4 { transition-delay: 0.6s; }
+    .reveal-delay-5 { transition-delay: 0.75s; }
 
     /* ── Stat animation ── */
     .stat {
@@ -152,7 +153,7 @@
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center; padding: 8rem 2rem 4rem;
     }
-    .hero-content { position: relative; z-index: 2; max-width: 720px; width: 100%; margin: 0 auto; }
+    .hero-content { position: relative; z-index: 2; max-width: 880px; width: 100%; margin: 0 auto; }
     .overline { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 1.25rem; letter-spacing: 0.02em; }
     .hero .overline { margin-bottom: 0.5rem; opacity: 0.5; }
     .hero h1 {
@@ -167,10 +168,10 @@
     .portal-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
 
     /* ── Section dividers ── */
-    .features, .key-features, .about, .team, .pricing, .cta {
+    .situations, .features, .key-features, .about, .team, .pricing, .faq, .cta {
       position: relative; z-index: 1;
     }
-    .features::after, .key-features::after, .about::after, .team::after, .pricing::after, .cta::after {
+    .situations::after, .features::after, .key-features::after, .about::after, .team::after, .pricing::after, .faq::after, .cta::after {
       content: '';
       position: absolute;
       top: 0;
@@ -186,10 +187,49 @@
     .section-header .overline { color: var(--cyan); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; }
     .section-header h2 {
       font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem;
-      background: linear-gradient(180deg, #fff 30%, var(--text-secondary) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      color: #fff;
     }
     .section-header p { color: var(--text-secondary); max-width: 560px; margin: 0 auto; font-size: 1.05rem; line-height: 1.7; }
+
+    /* ── Situations (narrative moments) ── */
+    .situations { padding: 6rem 2rem 7rem; }
+    .situations-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+    .moments { display: flex; flex-direction: column; gap: 4rem; }
+
+    .moment { display: flex; flex-direction: column; gap: 1.5rem; }
+    .moment-thought {
+      background: rgba(168, 85, 247, 0.04);
+      border-left: 3px solid rgba(168, 85, 247, 0.4);
+      padding: 1.5rem 1.75rem;
+      border-radius: 0 16px 16px 0;
+      font-size: 1.1rem; line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    .moment-response {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding-left: 0.5rem;
+    }
+    .moment-arrow {
+      flex-shrink: 0;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), var(--cyan));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+    }
+    .moment-arrow svg { width: 14px; height: 14px; }
+    .moment-response-content {
+      padding-top: 0.35rem;
+    }
+    .moment-response-label {
+      display: block;
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--cyan);
+      margin-bottom: 0.4rem;
+    }
+    .moment-response-text {
+      font-size: 1rem; color: var(--text-primary); line-height: 1.65;
+    }
 
     /* ── Features (3 cards) ── */
     .features { padding: 6rem 2rem 8rem; }
@@ -254,25 +294,144 @@
       background: var(--glass-bg); border: 1px solid var(--glass-border);
       display: flex; align-items: center; justify-content: center;
     }
-    .kf-visual-inner {
+
+    /* ── Keyfeatures mockups ── */
+    .kf-mockup {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem; gap: 1rem;
+    }
+
+    /* Adaptive Info: two cards side-by-side */
+    .kf-mockup.adaptive { gap: 0.85rem; }
+    .mockup-card {
+      background: rgba(168, 85, 247, 0.05);
+      border: 1px solid rgba(168, 85, 247, 0.18);
+      border-radius: 12px;
+      padding: 0.9rem;
+      display: flex; flex-direction: column; gap: 0.5rem;
+      backdrop-filter: blur(8px);
+    }
+    .mockup-card.overview { width: 110px; }
+    .mockup-card.detail { width: 150px; }
+    .mockup-tag {
+      font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em;
+      color: var(--cyan); text-transform: uppercase;
+    }
+    .mockup-line {
+      height: 5px; background: rgba(255, 255, 255, 0.12);
+      border-radius: 3px;
+    }
+    .mockup-line.strong {
+      height: 7px;
+      background: linear-gradient(90deg, rgba(168, 85, 247, 0.55), rgba(34, 211, 238, 0.4));
+    }
+    .mockup-line.short { width: 65%; }
+    .mockup-line.medium { width: 85%; }
+    .mockup-meta {
+      font-size: 0.55rem; color: var(--text-secondary);
+      letter-spacing: 0.04em; margin-top: 0.2rem;
+    }
+    .mockup-arrow {
+      flex-shrink: 0; width: 28px; height: 28px;
+      border-radius: 50%;
+      background: rgba(34, 211, 238, 0.12);
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan-light);
+      animation: float 3s ease-in-out infinite;
+    }
+    .mockup-arrow svg { width: 14px; height: 14px; }
+
+    /* Microsegment: parent + branching subtasks */
+    .kf-mockup.microsegment {
+      flex-direction: column; gap: 0; align-items: center; padding: 1.5rem 1rem;
+    }
+    .mockup-parent {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.18), rgba(34, 211, 238, 0.1));
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: 10px;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.78rem; font-weight: 600; color: var(--text-primary);
+    }
+    .mockup-tree {
+      width: 70%; height: 24px; position: relative;
+      margin: 0.4rem 0;
+    }
+    .mockup-tree::before {
+      content: ''; position: absolute; left: 50%; top: 0; bottom: 50%;
+      width: 1.5px; background: rgba(168, 85, 247, 0.3); transform: translateX(-50%);
+    }
+    .mockup-tree::after {
+      content: ''; position: absolute; left: 0; right: 0; top: 50%;
+      height: 1.5px; background: rgba(168, 85, 247, 0.3);
+    }
+    .mockup-children {
+      display: flex; flex-direction: column; gap: 0.35rem; width: 100%; max-width: 220px;
+    }
+    .mockup-task {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 7px;
+      padding: 0.45rem 0.8rem;
+      font-size: 0.72rem; color: var(--text-secondary);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .mockup-task .check {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+    }
+    .mockup-task.done {
+      color: rgba(34, 211, 238, 0.65); text-decoration: line-through;
+    }
+    .mockup-task.done .check {
+      background: var(--cyan); border-color: var(--cyan);
+    }
+    .mockup-task.active {
+      border-color: rgba(168, 85, 247, 0.4);
+      background: rgba(168, 85, 247, 0.06);
+      color: var(--text-primary);
+    }
+    .mockup-task.active .check {
+      border-color: var(--purple);
+      box-shadow: 0 0 8px rgba(168, 85, 247, 0.4);
+    }
+
+    /* Sensory: theme tile picker */
+    .kf-mockup.sensory { gap: 0.6rem; }
+    .theme-tile {
+      width: 90px; aspect-ratio: 0.85;
+      border-radius: 12px;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 1rem; padding: 2rem; text-align: center;
+      gap: 0.5rem;
+      font-size: 0.7rem; font-weight: 600;
+      border: 2px solid transparent;
+      transition: transform 0.3s;
+      position: relative; overflow: hidden;
+      flex-shrink: 0;
     }
-    .kf-visual-inner svg {
-      width: 64px; height: 64px; opacity: 0.9;
-      animation: float 4s ease-in-out infinite;
+    .theme-tile.morning {
+      background: linear-gradient(135deg, #f1e8ff, #d4dcf5);
+      color: #5d5380;
     }
-    .kf-visual-ring {
-      position: absolute; border-radius: 50%; border: 1px solid;
-      animation: kf-pulse 4s ease-in-out infinite;
+    .theme-tile.focus {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: #c4d2e8;
     }
-    @keyframes kf-pulse {
-      0%, 100% { opacity: 0.15; transform: scale(1); }
-      50% { opacity: 0.3; transform: scale(1.05); }
+    .theme-tile.quiet {
+      background: linear-gradient(135deg, #0a0a14, #050510);
+      color: #5a5a70;
     }
-    .kf-visual-label {
-      font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); letter-spacing: 0.06em; text-transform: uppercase;
+    .theme-tile.active {
+      border-color: rgba(168, 85, 247, 0.6);
+      box-shadow: 0 0 24px rgba(168, 85, 247, 0.3);
+      transform: scale(1.05);
     }
+    .theme-icon {
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .theme-icon svg { width: 24px; height: 24px; }
 
     /* ── About ── */
     .about { padding: 6rem 2rem 8rem; overflow: hidden; }
@@ -297,7 +456,7 @@
     }
     .about-mission blockquote {
       font-size: clamp(1.15rem, 2.5vw, 1.4rem); font-weight: 500; line-height: 1.7;
-      color: var(--text-primary); font-style: italic; margin-bottom: 1.5rem;
+      color: var(--text-primary); margin-bottom: 1.5rem;
     }
     .about-mission cite {
       font-style: normal; font-size: 0.9rem; color: var(--text-secondary); font-weight: 500;
@@ -326,8 +485,8 @@
 
     /* ── Team ── */
     .team { padding: 6rem 2rem 8rem; }
-    .team-inner { max-width: 900px; margin: 0 auto; }
-    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+    .team-inner { max-width: 1100px; margin: 0 auto; }
+    .team-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; }
 
     .team-member { text-align: center; }
     .team-avatar {
@@ -403,6 +562,50 @@
     }
     .price-card .btn { width: 100%; }
 
+    /* ── FAQ ── */
+    .faq { padding: 6rem 2rem 8rem; }
+    .faq-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+    .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .faq-item {
+      background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px;
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      transition: border-color 0.3s, background 0.3s;
+      overflow: hidden;
+    }
+    .faq-item[open] {
+      border-color: rgba(168, 85, 247, 0.2);
+      background: rgba(168, 85, 247, 0.04);
+    }
+    .faq-item summary {
+      list-style: none; cursor: pointer; padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      font-size: 1rem; font-weight: 600; color: var(--text-primary);
+      transition: color 0.25s;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { color: var(--cyan-light); }
+    .faq-icon {
+      flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(6, 182, 212, 0.1));
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      transition: transform 0.3s;
+    }
+    .faq-icon::before, .faq-icon::after {
+      content: ''; position: absolute; background: var(--cyan-light);
+      border-radius: 1px;
+    }
+    .faq-icon::before { width: 10px; height: 1.5px; }
+    .faq-icon::after { width: 1.5px; height: 10px; transition: transform 0.3s; }
+    .faq-item[open] .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+    .faq-item[open] .faq-icon { transform: rotate(180deg); }
+
+    .faq-body {
+      padding: 0 1.5rem 1.25rem;
+      color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;
+    }
+
     /* ── CTA ── */
     .cta { padding: 8rem 2rem; text-align: center; overflow: hidden; }
     .cta::before {
@@ -418,6 +621,42 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .cta p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2.5rem; }
+
+    .cta-form {
+      display: flex; gap: 0.75rem; max-width: 480px; margin: 0 auto;
+      flex-wrap: wrap; justify-content: center;
+    }
+    .cta-form input[type="email"] {
+      flex: 1; min-width: 220px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 0.75rem 1.25rem;
+      color: var(--text-primary);
+      font-family: inherit; font-size: 0.95rem;
+      transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+    }
+    .cta-form input[type="email"]::placeholder { color: var(--text-secondary); }
+    .cta-form input[type="email"]:focus {
+      outline: none;
+      border-color: rgba(168, 85, 247, 0.5);
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.08);
+    }
+    .cta-form button { white-space: nowrap; padding: 0.75rem 1.5rem; }
+
+    .cta-success {
+      display: none; flex-direction: column; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 0;
+    }
+    .cta-success.visible { display: flex; }
+    .cta-success svg {
+      width: 36px; height: 36px;
+      color: var(--cyan-light);
+    }
+    .cta-success p {
+      color: var(--text-primary); font-size: 1rem; font-weight: 500; margin: 0;
+    }
 
     /* ── Footer ── */
     .footer { position: relative; z-index: 1; padding: 2.5rem 2rem; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.04); }
@@ -447,12 +686,13 @@
 
     /* ── Responsive ── */
     @media (max-width: 900px) {
+      .situations-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
       .features-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
       .kf-row { grid-template-columns: 1fr; gap: 2rem; }
       .kf-row.reverse .kf-visual { order: 0; }
-      .kf-visual { max-width: 400px; margin: 0 auto; }
+      .kf-visual { max-width: 480px; margin: 0 auto; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
-      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-grid { grid-template-columns: repeat(3, 1fr); }
       .about-values { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto 4rem; }
       .about-stats { gap: 2.5rem; }
     }
@@ -466,11 +706,13 @@
       .hero h1 { margin-bottom: 1.75rem; }
       .hero-sub { font-size: 0.95rem; margin-bottom: 3rem; }
       .hero-buttons { gap: 0.85rem; }
+      .situations { padding: 4rem 1.5rem 5rem; }
       .features { padding: 4rem 1.5rem 6rem; }
       .key-features { padding: 4rem 1.5rem 6rem; }
       .about { padding: 4rem 1.5rem 6rem; }
       .team { padding: 4rem 1.5rem 6rem; }
       .pricing { padding: 4rem 1.5rem 6rem; }
+      .faq { padding: 4rem 1.5rem 6rem; }
       .cta { padding: 5rem 1.5rem; }
     }
 
@@ -482,14 +724,21 @@
       .hero-sub { font-size: 0.9rem; line-height: 1.75; margin-bottom: 2.5rem; }
       .hero-buttons { flex-direction: column; align-items: center; gap: 0.75rem; }
       .hero-buttons .btn { width: 100%; max-width: 260px; padding: 0.75rem 1.5rem; }
+      .situations { padding: 3rem 1.25rem 4rem; }
+      .situation-card { padding: 1.75rem 1.5rem; }
       .features { padding: 3rem 1.25rem 5rem; }
       .card { padding: 1.75rem 1.5rem; }
       .key-features { padding: 3rem 1.25rem 5rem; }
       .kf-row { gap: 1.5rem; margin-bottom: 4rem; }
+      .kf-visual { aspect-ratio: auto; min-height: 240px; max-width: 100%; }
+      .kf-mockup { padding: 1rem 0.5rem; }
       .about-mission { padding: 2rem 1.5rem; }
       .about-stats { flex-direction: column; gap: 1.5rem; }
       .team-grid { grid-template-columns: 1fr; max-width: 260px; margin: 0 auto; }
       .pricing { padding: 3rem 1.25rem 5rem; }
+      .faq { padding: 3rem 1.25rem 5rem; }
+      .faq-item summary { padding: 1rem 1.25rem; font-size: 0.95rem; }
+      .faq-body { padding: 0 1.25rem 1rem; }
       .cta { padding: 4rem 1.25rem; }
     }
   </style>
@@ -502,12 +751,12 @@
       <a href="#" class="logo">Nura</a>
       <nav class="nav">
         <ul class="nav-links">
-          <li><a href="#features">Features</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#about">About</a></li>
+          <li><a href="#features">Можливості</a></li>
+          <li><a href="#pricing">Тарифи</a></li>
+          <li><a href="#team">Команда</a></li>
+          <li><a href="#about">Про нас</a></li>
         </ul>
-        <a href="#cta" class="btn btn-primary btn-header">Support Us</a>
+        <a href="#cta" class="btn btn-primary btn-header">Ранній доступ</a>
         <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
         </button>
@@ -521,35 +770,83 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <nav class="mobile-menu-nav">
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#team">Team</a>
-      <a href="#about">About</a>
+      <a href="#features">Можливості</a>
+      <a href="#pricing">Тарифи</a>
+      <a href="#team">Команда</a>
+      <a href="#about">Про нас</a>
     </nav>
-    <a href="#cta" class="btn btn-primary">Support Us</a>
+    <a href="#cta" class="btn btn-primary">Ранній доступ</a>
   </div>
 
   <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
-      <p class="overline">Powered by cognitive science</p>
-      <h1>Master your knowledge.<br>Skip the burnout.</h1>
-      <p class="hero-sub">Nura transforms complex information into simple, interactive formats. We track your workflow to personalize your pace, keeping you focused, productive, and stress-free.</p>
+      <p class="overline">Інструменти, що адаптуються під тебе</p>
+      <h1>Не потрібно більше зусиль.<br>Потрібні правильні інструменти.</h1>
+      <p class="hero-sub">Nura підлаштовує інтерфейс і структуру задач під твій стан. Великі проєкти стають зрозумілими кроками. Інформації — стільки, скільки потрібно зараз.</p>
       <div class="hero-buttons">
-        <a href="#cta" class="btn btn-primary">Support Us</a>
-        <a href="#features" class="btn btn-secondary">See how it works</a>
+        <a href="#cta" class="btn btn-primary">Отримати ранній доступ</a>
+        <a href="#features" class="btn btn-secondary">Як це працює</a>
       </div>
     </div>
     <canvas class="portal-canvas" id="portal-canvas"></canvas>
+  </section>
+
+  <!-- Situations -->
+  <section class="situations" id="situations">
+    <div class="situations-inner">
+      <div class="section-header reveal">
+        <p class="overline">Знайомі моменти</p>
+        <h2>Кожен з нас тут бував.</h2>
+      </div>
+      <div class="moments">
+        <div class="moment reveal">
+          <p class="moment-thought">«Вмикаю комп'ютер. Десять відкритих вкладок, на пів задачі почато, нічого не закінчено. Гортаю стрічку, бо легше».</p>
+          <div class="moment-response">
+            <span class="moment-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </span>
+            <div class="moment-response-content">
+              <span class="moment-response-label">Що робить Nura</span>
+              <p class="moment-response-text">Прибирає все зайве. Залишає одну активну задачу — ту, що ти можеш почати прямо зараз.</p>
+            </div>
+          </div>
+        </div>
+        <div class="moment reveal">
+          <p class="moment-thought">«Знаю, що треба написати звіт. Сиджу годину. Пишу заголовок, видаляю, переписую. Не можу почати».</p>
+          <div class="moment-response">
+            <span class="moment-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </span>
+            <div class="moment-response-content">
+              <span class="moment-response-label">Що робить Nura</span>
+              <p class="moment-response-text">Розбиває «написати звіт» на «відкрити файл, додати назву». Маленький крок — і ти вже всередині.</p>
+            </div>
+          </div>
+        </div>
+        <div class="moment reveal">
+          <p class="moment-thought">«Кожне сповіщення, кожна анімація, кожен яскравий банер виштовхує мене з фокусу. Не можу думати в такому шумі».</p>
+          <div class="moment-response">
+            <span class="moment-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </span>
+            <div class="moment-response-content">
+              <span class="moment-response-label">Що робить Nura</span>
+              <p class="moment-response-text">Один запит тиші. Анімації зникають, кольори стають м'якішими, сповіщення затихають — до кінця сесії.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Features (3 cards) -->
   <section class="features" id="features">
     <div class="features-inner">
       <div class="section-header reveal">
-        <p class="overline">Your personal learning engine</p>
-        <h2>Consume info, without the fatigue.</h2>
-        <p>Designed to adapt to your unique rhythm, Nura protects your mental energy while maximizing retention.</p>
+        <p class="overline">Що вміє Nura</p>
+        <h2>Три інструменти. Кожен вирішує конкретну проблему.</h2>
+        <p>Без зайвих опцій і завантаженого інтерфейсу. Тільки те, що працює — і працює саме тоді, коли потрібно.</p>
       </div>
       <div class="features-grid">
         <div class="card reveal reveal-delay-1">
@@ -560,8 +857,8 @@
               <defs><linearGradient id="wand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient></defs>
             </svg>
           </div>
-          <h3>From Dense to Digestible.</h3>
-          <p>We turn heavy data and long articles into interactive, bite-sized formats that are actually fun to consume.</p>
+          <h3>Адаптивна інформація</h3>
+          <p>Перемикайся між коротким оглядом і повним контекстом одним рухом. Коли втомлений — Nura показує тільки головне. Коли є фокус — занурюйся в деталі.</p>
         </div>
         <div class="card reveal reveal-delay-2">
           <div class="card-icon">
@@ -570,8 +867,8 @@
               <defs><linearGradient id="act-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient></defs>
             </svg>
           </div>
-          <h3>Adaptive Pacing.</h3>
-          <p>Nura monitors your typing speed and tab usage to gauge your cognitive load, adjusting content delivery before you hit the wall.</p>
+          <h3>Маленькі кроки</h3>
+          <p>Замість «написати звіт» — «відкрити шаблон», «додати заголовок», «окреслити три пункти». Nura перетворює великі задачі на конкретні дії, які займають кілька хвилин.</p>
         </div>
         <div class="card reveal reveal-delay-3">
           <div class="card-icon">
@@ -582,8 +879,8 @@
               <defs><linearGradient id="brain-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient></defs>
             </svg>
           </div>
-          <h3>Never Forget a Detail.</h3>
-          <p>Reinforce what you learn with micro-tests perfectly timed and integrated directly into your workflow.</p>
+          <h3>Сенсорний контроль</h3>
+          <p>Затемнення, контраст, кольорові схеми, відключення анімацій — все в одній панелі. Інтерфейс підлаштовується під твою чутливість, а не навпаки.</p>
         </div>
       </div>
     </div>
@@ -593,89 +890,88 @@
   <section class="key-features" id="key-features">
     <div class="key-features-inner">
       <div class="section-header reveal">
-        <p class="overline">How Nura works</p>
-        <h2>Intelligence that adapts to you.</h2>
-        <p>Three core systems work together to reshape how information reaches your brain.</p>
+        <p class="overline">Як це виглядає</p>
+        <h2>Подивись зблизька.</h2>
+        <p>Кожна функція — на своєму екрані. Ось як Nura поводиться у момент, коли тобі це найбільше потрібно.</p>
       </div>
 
-      <!-- 1: Adaptive Content -->
       <div class="kf-row reveal">
         <div class="kf-text">
-          <span class="kf-label">Adaptive Content</span>
-          <h3>Information shaped to fit your mind.</h3>
-          <p>Not everyone absorbs knowledge the same way. Nura restructures dense material into the format that works best for you — summaries, visual maps, interactive Q&amp;A, or step-by-step walkthroughs.</p>
-          <p>The system learns from your interactions over time: which formats you engage with, where you slow down, and what you skip. Every session gets sharper.</p>
+          <span class="kf-label">Адаптивна інформація</span>
+          <h3>Огляд для важких днів. Деталі — для глибокої роботи.</h3>
+          <p>У поганий день не потрібен повний список усього, що не зроблено. Огляд показує тільки наступний крок і прогрес. Решта чекає.</p>
+          <p>Коли є фокус — Деталі: повна історія, обговорення, посилання, файли. Все під рукою. Різні типи подачі для різних станів.</p>
         </div>
         <div class="kf-visual">
-          <div class="kf-visual-ring" style="width:160px;height:160px;border-color:rgba(168,85,247,0.15);"></div>
-          <div class="kf-visual-ring" style="width:110px;height:110px;border-color:rgba(34,211,238,0.15);animation-delay:1s;"></div>
-          <div class="kf-visual-ring" style="width:60px;height:60px;border-color:rgba(168,85,247,0.2);animation-delay:2s;"></div>
-          <div class="kf-visual-inner">
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M32 8L56 20V44L32 56L8 44V20L32 8Z" stroke="url(#kf1)" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
-              <path d="M32 32L56 20M32 32L8 20M32 32V56" stroke="url(#kf1)" stroke-width="2" opacity="0.5"/>
-              <circle cx="32" cy="8" r="3" fill="#a855f7"/>
-              <circle cx="56" cy="20" r="3" fill="#7c3aed"/>
-              <circle cx="56" cy="44" r="3" fill="#06b6d4"/>
-              <circle cx="32" cy="56" r="3" fill="#22d3ee"/>
-              <circle cx="8" cy="44" r="3" fill="#06b6d4"/>
-              <circle cx="8" cy="20" r="3" fill="#a855f7"/>
-              <defs><linearGradient id="kf1" x1="8" y1="8" x2="56" y2="56"><stop stop-color="#a855f7"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
-            </svg>
-            <span class="kf-visual-label">Content Graph</span>
+          <div class="kf-mockup adaptive">
+            <div class="mockup-card overview">
+              <div class="mockup-tag">Огляд</div>
+              <div class="mockup-line strong"></div>
+              <div class="mockup-line short"></div>
+              <div class="mockup-meta">3 з 8 ✓</div>
+            </div>
+            <span class="mockup-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+            </span>
+            <div class="mockup-card detail">
+              <div class="mockup-tag">Деталі</div>
+              <div class="mockup-line strong"></div>
+              <div class="mockup-line"></div>
+              <div class="mockup-line medium"></div>
+              <div class="mockup-line short"></div>
+              <div class="mockup-meta">📎 4 · 💬 7 · 30.04</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- 2: Burnout Tracking -->
       <div class="kf-row reverse reveal">
         <div class="kf-text">
-          <span class="kf-label">Burnout Radar</span>
-          <h3>We see the wall before you hit it.</h3>
-          <p>Nura passively monitors signals that indicate rising cognitive load — typing cadence, scroll patterns, tab-switching frequency, and session duration. No surveys, no interruptions.</p>
-          <p>When it detects early signs of fatigue, it intervenes: slowing the pace, suggesting a break, or switching to lighter content. You stay in flow longer and recover faster.</p>
+          <span class="kf-label">Маленькі кроки</span>
+          <h3>Велика задача? Покажи мені перший крок.</h3>
+          <p>«Підготувати квартальний звіт» — це не задача, це паніка. «Відкрити шаблон» — це задача.</p>
+          <p>Nura пропонує план, ти приймаєш або корегуєш. Кожен крок — реальний за 2-5 хвилин, без додаткових рішень посередині.</p>
         </div>
         <div class="kf-visual">
-          <div class="kf-visual-ring" style="width:150px;height:150px;border-color:rgba(6,182,212,0.15);"></div>
-          <div class="kf-visual-ring" style="width:100px;height:100px;border-color:rgba(168,85,247,0.15);animation-delay:1.5s;"></div>
-          <div class="kf-visual-inner">
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="32" cy="32" r="24" stroke="url(#kf2)" stroke-width="2.5" fill="none"/>
-              <path d="M32 16V32L42 42" stroke="url(#kf2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="32" cy="32" r="3" fill="#22d3ee"/>
-              <path d="M20 8L18 4M44 8L46 4M56 20L60 18M56 44L60 46M8 20L4 18M8 44L4 46" stroke="rgba(168,85,247,0.4)" stroke-width="2" stroke-linecap="round"/>
-              <defs><linearGradient id="kf2" x1="8" y1="8" x2="56" y2="56"><stop stop-color="#22d3ee"/><stop offset="1" stop-color="#a855f7"/></linearGradient></defs>
-            </svg>
-            <span class="kf-visual-label">Fatigue Monitor</span>
+          <div class="kf-mockup microsegment">
+            <div class="mockup-parent">Підготувати звіт</div>
+            <div class="mockup-tree"></div>
+            <div class="mockup-children">
+              <div class="mockup-task done"><span class="check"></span>Відкрити шаблон</div>
+              <div class="mockup-task active"><span class="check"></span>Додати заголовки</div>
+              <div class="mockup-task"><span class="check"></span>Окреслити 3 пункти</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- 3: Smart Scheduling -->
       <div class="kf-row reveal">
         <div class="kf-text">
-          <span class="kf-label">Smart Scheduling</span>
-          <h3>The right content at the right moment.</h3>
-          <p>Nura maps your peak focus windows — the hours where deep learning sticks. It schedules demanding material for high-energy periods and reserves lighter review for the wind-down.</p>
-          <p>Combined with spaced repetition, it ensures you revisit concepts at the scientifically optimal interval. Nothing slips through the cracks, and nothing feels like a chore.</p>
+          <span class="kf-label">Сенсорна адаптивність</span>
+          <h3>Одна кнопка — один настрій.</h3>
+          <p>Ранок: світліший інтерфейс, більший шрифт, активні переходи. Фокус: темніший, мінімум елементів, без анімацій. Спокій: ще тихіший — для пізнього вечора.</p>
+          <p>Зміна — один клік. Жодного копання у системних налаштуваннях. Профілі переключаються разом з твоїм станом.</p>
         </div>
         <div class="kf-visual">
-          <div class="kf-visual-ring" style="width:140px;height:140px;border-color:rgba(168,85,247,0.12);"></div>
-          <div class="kf-visual-ring" style="width:90px;height:90px;border-color:rgba(6,182,212,0.12);animation-delay:0.8s;"></div>
-          <div class="kf-visual-inner">
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="8" y="12" width="48" height="44" rx="6" stroke="url(#kf3)" stroke-width="2.5" fill="none"/>
-              <line x1="8" y1="24" x2="56" y2="24" stroke="url(#kf3)" stroke-width="2"/>
-              <line x1="20" y1="8" x2="20" y2="16" stroke="#a855f7" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="44" y1="8" x2="44" y2="16" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round"/>
-              <rect x="16" y="30" width="10" height="6" rx="1.5" fill="rgba(168,85,247,0.4)"/>
-              <rect x="30" y="30" width="10" height="6" rx="1.5" fill="rgba(34,211,238,0.4)"/>
-              <rect x="16" y="40" width="10" height="6" rx="1.5" fill="rgba(34,211,238,0.3)"/>
-              <rect x="30" y="40" width="10" height="6" rx="1.5" fill="rgba(168,85,247,0.3)"/>
-              <rect x="44" y="30" width="6" height="6" rx="1.5" fill="rgba(168,85,247,0.25)"/>
-              <defs><linearGradient id="kf3" x1="8" y1="8" x2="56" y2="56"><stop stop-color="#a855f7"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
-            </svg>
-            <span class="kf-visual-label">Focus Planner</span>
+          <div class="kf-mockup sensory">
+            <div class="theme-tile morning">
+              <span class="theme-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+              </span>
+              <span>Ранок</span>
+            </div>
+            <div class="theme-tile focus active">
+              <span class="theme-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" opacity="0.4"/></svg>
+              </span>
+              <span>Фокус</span>
+            </div>
+            <div class="theme-tile quiet">
+              <span class="theme-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" opacity="0.3"/></svg>
+              </span>
+              <span>Спокій</span>
+            </div>
           </div>
         </div>
       </div>
@@ -686,14 +982,14 @@
   <section class="about" id="about">
     <div class="about-inner">
       <div class="section-header reveal">
-        <p class="overline">About us</p>
-        <h2>Built for minds that never stop.</h2>
-        <p>We combine cognitive science with adaptive technology to create tools that respect how humans actually think.</p>
+        <p class="overline">Про нас</p>
+        <h2>Поважаємо твій ритм.</h2>
+        <p>Більшість продуктивних застосунків створено з розрахунку на ідеальний день: ясну голову, повну енергію, відсутність відволікань. Реальність інша — і Nura створена для реальності, не для ідеалу.</p>
       </div>
 
       <div class="about-mission reveal">
-        <blockquote>"The tools we use every day were built for throughput, not for people. We started Nura to flip that — to build a layer between you and information overload that learns how you learn, and meets you where you are."</blockquote>
-        <cite>— The Nura founding team</cite>
+        <blockquote>«Ми не вчимо тебе працювати краще. Ми робимо інструменти, які це роблять простішим».</blockquote>
+        <cite>— Команда Nura</cite>
       </div>
 
       <div class="about-values">
@@ -704,8 +1000,8 @@
               <defs><linearGradient id="av1" x1="2" y1="2" x2="22" y2="22"><stop stop-color="#a855f7"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
             </svg>
           </div>
-          <h4>Science-first</h4>
-          <p>Every feature is grounded in peer-reviewed cognitive science, not Silicon Valley guesswork.</p>
+          <h4>Науковий підхід</h4>
+          <p>Кожна функція ґрунтується на рецензованих дослідженнях когнітивного навантаження.</p>
         </div>
         <div class="about-value reveal reveal-delay-2">
           <div class="about-value-icon">
@@ -714,8 +1010,8 @@
               <defs><linearGradient id="av2" x1="2" y1="2" x2="22" y2="22"><stop stop-color="#a855f7"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
             </svg>
           </div>
-          <h4>Human-centered</h4>
-          <p>We optimize for wellbeing, not engagement metrics. Your energy matters more than your screen time.</p>
+          <h4>Гнучкість</h4>
+          <p>Не існує одного правильного способу працювати. Nura адаптується до твого підходу, а не намагається його випрямити.</p>
         </div>
         <div class="about-value reveal reveal-delay-3">
           <div class="about-value-icon">
@@ -724,23 +1020,23 @@
               <defs><linearGradient id="av3" x1="3" y1="3" x2="21" y2="22"><stop stop-color="#a855f7"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
             </svg>
           </div>
-          <h4>Privacy-native</h4>
-          <p>Behavioral signals stay on your device. We learn your patterns without ever seeing your data.</p>
+          <h4>Приватність</h4>
+          <p>Поведінкові патерни обробляються локально на пристрої. Жодних хмарних аналітик. Жодного продажу даних.</p>
         </div>
       </div>
 
       <div class="about-stats">
         <div class="stat">
           <span class="stat-number">3x</span>
-          <span class="stat-label">Better retention vs.<br>traditional reading</span>
+          <span class="stat-label">Швидше повертаєшся<br>у фокус після відволікання</span>
         </div>
         <div class="stat">
           <span class="stat-number">40%</span>
-          <span class="stat-label">Less cognitive fatigue<br>reported by testers</span>
+          <span class="stat-label">Менше когнітивної втоми<br>наприкінці робочого дня</span>
         </div>
         <div class="stat">
           <span class="stat-number">12k+</span>
-          <span class="stat-label">Early supporters<br>on the waitlist</span>
+          <span class="stat-label">Користувачів у списку<br>очікування бети</span>
         </div>
       </div>
     </div>
@@ -750,34 +1046,40 @@
   <section class="team" id="team">
     <div class="team-inner">
       <div class="section-header reveal">
-        <p class="overline">Our team</p>
-        <h2>Small team. Big mission.</h2>
-        <p>Researchers, builders, and designers united by the belief that technology should protect your focus, not exploit it.</p>
+        <p class="overline">Команда</p>
+        <h2>Невелика команда. Конкретна місія.</h2>
+        <p>Дослідники, аналітики та дизайнери, що вірять: технології мають берегти увагу, а не її експлуатувати.</p>
       </div>
       <div class="team-grid">
         <div class="team-member reveal reveal-delay-1">
-          <div class="team-avatar"><span>AR</span></div>
-          <h4>Alex Reyes</h4>
-          <div class="team-role">CEO &amp; Co-founder</div>
-          <p>Ex-neuroscience researcher. Obsessed with attention and memory systems.</p>
+          <div class="team-avatar"><span>АП</span></div>
+          <h4>Анастасія Пилипчак</h4>
+          <div class="team-role">Marketing Specialist</div>
+          <p>Раніше — нейронаука. Працює над системами уваги вже десять років.</p>
         </div>
         <div class="team-member reveal reveal-delay-2">
-          <div class="team-avatar"><span>ML</span></div>
-          <h4>Maya Lin</h4>
-          <div class="team-role">CTO &amp; Co-founder</div>
-          <p>Built adaptive systems at scale. Believes interfaces should read the room.</p>
+          <div class="team-avatar"><span>БР</span></div>
+          <h4>Богдан Романишин</h4>
+          <div class="team-role">Business Analyst</div>
+          <p>Будує адаптивні інтерфейси. Переконана: програми мають відчувати настрій.</p>
         </div>
         <div class="team-member reveal reveal-delay-3">
-          <div class="team-avatar"><span>JK</span></div>
-          <h4>Jonas Kemp</h4>
-          <div class="team-role">Head of Design</div>
-          <p>Designs for calm. Previously led product design at a meditation app.</p>
+          <div class="team-avatar"><span>АК</span></div>
+          <h4>Анастасія Киричок</h4>
+          <div class="team-role">Project Manager</div>
+          <p>Проєктує спокій. Раніше — продуктовий дизайн у застосунку для медитацій.</p>
         </div>
         <div class="team-member reveal reveal-delay-4">
-          <div class="team-avatar"><span>SP</span></div>
-          <h4>Sara Park</h4>
-          <div class="team-role">Lead Engineer</div>
-          <p>Full-stack builder. Turns cognitive models into responsive, real-time UIs.</p>
+          <div class="team-avatar"><span>АК</span></div>
+          <h4>Аксинія Кушнір</h4>
+          <div class="team-role">UI/UX Designer</div>
+          <p>Full-stack інженер. Перетворює когнітивні моделі на UI у реальному часі.</p>
+        </div>
+        <div class="team-member reveal reveal-delay-5">
+          <div class="team-avatar"><span>СБ</span></div>
+          <h4>Микита Клочко</h4>
+          <div class="team-role">Content Manager</div>
+          <p>Кандидатка психологічних наук. Перетворює академічні дослідження на функції продукту.</p>
         </div>
       </div>
     </div>
@@ -787,50 +1089,96 @@
   <section class="pricing" id="pricing">
     <div class="pricing-inner">
       <div class="section-header reveal">
-        <p class="overline">Pricing</p>
-        <h2>Start free. Scale when you need.</h2>
-        <p>No hidden fees, no lock-in. Every plan includes the core adaptive engine.</p>
+        <p class="overline">Тарифи</p>
+        <h2>Почни безкоштовно. Розширюй за потребою.</h2>
+        <p>Без прихованих платежів. У кожному плані — повний доступ до адаптивного ядра.</p>
       </div>
       <div class="pricing-grid">
         <div class="price-card reveal reveal-delay-1">
           <h3>Starter</h3>
-          <p class="price-desc">For individuals exploring smarter learning.</p>
-          <div class="price-amount"><span class="currency">$</span>0 <span class="period">/ mo</span></div>
+          <p class="price-desc">Для тих, хто пробує.</p>
+          <div class="price-amount"><span class="currency">$</span>0 <span class="period">/ міс</span></div>
           <ul class="price-features">
-            <li>Adaptive content reformatting</li>
-            <li>Basic burnout detection</li>
-            <li>5 active learning sessions</li>
-            <li>Community support</li>
+            <li>Адаптивне відображення інформації</li>
+            <li>Базова мікросегментація задач</li>
+            <li>До 5 активних проєктів</li>
+            <li>Локальна обробка даних</li>
           </ul>
-          <a href="#cta" class="btn btn-secondary">Get Started</a>
+          <a href="#cta" class="btn btn-secondary">Почати безкоштовно</a>
         </div>
         <div class="price-card featured reveal reveal-delay-2">
-          <span class="price-badge">Most popular</span>
+          <span class="price-badge">Найпопулярніший</span>
           <h3>Pro</h3>
-          <p class="price-desc">For professionals who learn for a living.</p>
-          <div class="price-amount"><span class="currency">$</span>12 <span class="period">/ mo</span></div>
+          <p class="price-desc">Для індивідуальної глибокої роботи.</p>
+          <div class="price-amount"><span class="currency">$</span>12 <span class="period">/ міс</span></div>
           <ul class="price-features">
-            <li>Everything in Starter</li>
-            <li>Advanced fatigue monitoring</li>
-            <li>Smart scheduling &amp; spaced repetition</li>
-            <li>Unlimited sessions</li>
-            <li>Priority support</li>
+            <li>Все, що в Starter</li>
+            <li>Повний сенсорний контроль на рівні ОС</li>
+            <li>Профілі для різних станів</li>
+            <li>Без обмежень на проєкти</li>
           </ul>
-          <a href="#cta" class="btn btn-primary">Get Pro</a>
+          <a href="#cta" class="btn btn-primary">Отримати Pro</a>
         </div>
         <div class="price-card reveal reveal-delay-3">
           <h3>Team</h3>
-          <p class="price-desc">For teams that ship knowledge, not burnout.</p>
-          <div class="price-amount"><span class="currency">$</span>29 <span class="period">/ seat / mo</span></div>
+          <p class="price-desc">Для команд, що бережуть свій ресурс.</p>
+          <div class="price-amount"><span class="currency">$</span>29 <span class="period">/ місце / міс</span></div>
           <ul class="price-features">
-            <li>Everything in Pro</li>
-            <li>Team analytics dashboard</li>
-            <li>Shared content library</li>
-            <li>SSO &amp; admin controls</li>
-            <li>Dedicated account manager</li>
+            <li>Все, що в Pro</li>
+            <li>Спільні профілі та шаблони</li>
+            <li>Аналітика навантаження команди</li>
+            <li>Інтеграція з Jira, Notion та Slack</li>
           </ul>
-          <a href="#cta" class="btn btn-secondary">Contact Us</a>
+          <a href="#cta" class="btn btn-secondary">Зв'язатись з нами</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="faq-inner">
+      <div class="section-header reveal">
+        <p class="overline">Часті запитання</p>
+        <h2>Що тебе зараз турбує?</h2>
+        <p>Якщо тут немає відповіді — напиши нам. Відповідаємо в робочі дні протягом 24 годин.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal reveal-delay-1">
+          <summary>
+            <span>Чим Nura відрізняється від RescueTime або Todoist?</span>
+            <span class="faq-icon"></span>
+          </summary>
+          <div class="faq-body">Більшість планерів вимагають, щоб ти підлаштувався під їхню систему. Nura працює навпаки — змінює свою поведінку залежно від твого стану. Менше деталей у важкі дні, більше — у продуктивні.</div>
+        </details>
+        <details class="faq-item reveal reveal-delay-1">
+          <summary>
+            <span>Чи можу я просто користуватись Nura як звичайним планером, без адаптацій?</span>
+            <span class="faq-icon"></span>
+          </summary>
+          <div class="faq-body">Так. Усі автоматичні адаптації можна вимкнути в налаштуваннях. Nura залишається повноцінним планером, навіть коли вона не працює на весь потенціал.</div>
+        </details>
+        <details class="faq-item reveal reveal-delay-2">
+          <summary>
+            <span>Що з моїми даними?</span>
+            <span class="faq-icon"></span>
+          </summary>
+          <div class="faq-body">Поведінкові патерни — швидкість друку, перемикання між задачами — обробляються локально на твоєму пристрої. Жодних хмарних аналітик. Жодного продажу даних рекламодавцям. Задачі та проєкти можна синхронізувати — за твоїм бажанням.</div>
+        </details>
+        <details class="faq-item reveal reveal-delay-2">
+          <summary>
+            <span>На яких платформах буде Nura?</span>
+            <span class="faq-icon"></span>
+          </summary>
+          <div class="faq-body">macOS і Windows — у бета-релізі. Веб-версія — у відкритому запуску. iOS і Android — після відкритого запуску, орієнтовно осінь 2026.</div>
+        </details>
+        <details class="faq-item reveal reveal-delay-3">
+          <summary>
+            <span>Як швидко я побачу різницю?</span>
+            <span class="faq-icon"></span>
+          </summary>
+          <div class="faq-body">Сенсорний контроль і мікросегментацію задач — одразу, з першої сесії. Адаптивне відображення інформації потребує 1-2 тижні: системі потрібен час, щоб зрозуміти твої патерни.</div>
+        </details>
       </div>
     </div>
   </section>
@@ -838,15 +1186,22 @@
   <!-- CTA -->
   <section class="cta" id="cta">
     <div class="cta-inner reveal">
-      <h2>Ready to change how you learn?</h2>
-      <p>Join our journey to make information accessible and burnout a thing of the past.</p>
-      <a href="#" class="btn btn-primary">Support Us Today</a>
+      <h2>Готовий працювати у власному ритмі?</h2>
+      <p>Залиш пошту — напишемо, щойно beta-версія буде готова. (Без розсилок та зайвих листів.)</p>
+      <form class="cta-form" id="cta-form" novalidate>
+        <input type="email" name="email" placeholder="Твоя електронна пошта" required autocomplete="email">
+        <button type="submit" class="btn btn-primary">Записатись</button>
+      </form>
+      <div class="cta-success" id="cta-success" aria-live="polite">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <p>Дякуємо!</p>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <p>&copy; 2026 Nura. All rights reserved.</p>
+    <p>&copy; 2026 Nura · Концепт-проєкт</p>
   </footer>
 
   <script>
@@ -1032,6 +1387,17 @@
       });
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal, .stat').forEach(el => observer.observe(el));
+
+    // CTA form (concept — no real submission)
+    const ctaForm = document.getElementById('cta-form');
+    const ctaSuccess = document.getElementById('cta-success');
+    ctaForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = ctaForm.querySelector('input[type="email"]');
+      input.value = '';
+      ctaForm.style.display = 'none';
+      ctaSuccess.classList.add('visible');
+    });
   </script>
 </body>
 </html>
